@@ -71,6 +71,13 @@ button:hover {
         const randomIndex = Math.floor(Math.random() * arr.length);
         return arr[randomIndex];
       }
+      function titleize(str) {
+    return str
+        .toLowerCase() // Convert the whole string to lowercase
+        .split(" ")    // Split the string into words
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1)) // Capitalize the first letter of each word
+        .join(" ");    // Join the words back into a single string
+}
 
       const form = document.querySelector("form");
 
@@ -109,12 +116,12 @@ button:hover {
           const tip = getRandomElement(child.tips);
 
           if (child.naughty) {
-            results.innerHTML = `${name.value}... We found you! You're on the <span class="naughty">Naughty</span> list. ${tip}`;
+            results.innerHTML = `${titleize(name.value)}... We found you! You're on the <span class="naughty">Naughty</span> list. ${tip}`;
           } else {
-            results.innerHTML = `${name.value}... We found you! You're on the <span class="">Nice</span> list. ${tip}`;
+            results.innerHTML = `${titleize(name.value)}... We found you! You're on the <span class="nice">Nice</span> list. ${tip}`;
           }
         } else {
-          results.innerText = `${name.value}... Hmm, they don't seem to be on our list!`;
+          results.innerText = `${titleize(name.value)}... Hmm, they don't seem to be on our list!`;
         }
       });
     </script>
