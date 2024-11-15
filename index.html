@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Santa's Nice and Naughty List</title>
+    <style>
+      main {
+        max-width: 640px;
+        margin: 0 auto;
+      }
+
+      .naughty {
+        color: red;
+        font-weight: 600;
+      }
+
+      .nice {
+        color: green;
+        font-weight: 600;
+      }
+      body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f8ff;
+    text-align: left;
+    margin: 50;
+    padding: 50;
+}
+form input, button {
+    padding: 10px;
+    margin: 5px;
+    font-size: 16px;
+}
+button {
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #4cae4c;
+}
+
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>🎅 Santa's Good and Naughty List 🎄</h1>
+  </header>
+
+    <main>
+      <br>
+      <br>
+      <br>
+      <form>
+        <input name="name" placeholder="Type your name here" required>
+        <input type="submit" value="Check List">
+      </form>
+
+      <div id="santas-results"></div>
+    </main>
+
+    <script>
+      function getRandomElement(arr) {
+        const randomIndex = Math.floor(Math.random() * arr.length);
+        return arr[randomIndex];
+      }
+
+      const form = document.querySelector("form");
+
+      form.addEventListener("submit", function (ev) {
+        ev.stopPropagation();
+        ev.preventDefault();
+
+        var results = document.querySelector("#santas-results");
+
+        var name = document.querySelector("input[name=\"name\"]");
+
+        const key = name.value.toLowerCase().trim().replaceAll(" ", "").substring(0, 7);
+
+        var list = {
+          "marian": {
+            naughty: true,
+            tips: [
+              "You need to listen to your mom and dad more!",
+              "You seem to fuss a lot, let's not do that!",
+              "You need to practice piano and violin without fussing.",
+              "You are so close to the good list. Let's keep up the good work!",
+            ],
+          },
+          "vivian": {
+            naughty: false,
+            tips: [
+              "Keep up the great work! You are amazing",
+              "Heard you want to have a mic for Christmas. We are putting that on the list!",
+            ],
+          },
+        }
+
+        const child = list[key];
+
+        if (child) {
+          const tip = getRandomElement(child.tips);
+
+          if (child.naughty) {
+            results.innerHTML = `${name.value}... We found you! You're on the <span class="naughty">Naughty</span> list. ${tip}`;
+          } else {
+            results.innerHTML = `${name.value}... We found you! You're on the <span class="">Nice</span> list. ${tip}`;
+          }
+        } else {
+          results.innerText = `${name.value}... Hmm, they don't seem to be on our list!`;
+        }
+      });
+    </script>
+  <br>
+  <br>
+  <br>
+      <section class="suggestions-section">
+        <h2>How to Stay on the Good List 🎁</h2>
+        <p>1. Be kind
+          <p>2. Share with others </p>
+          <p>3. Listen to your parents</p> 
+          <p>4. Always do your homework</p>
+    </section>
+  </body>
+
+</html>
