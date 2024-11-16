@@ -89,7 +89,7 @@ button:hover {
 
         var name = document.querySelector("input[name=\"name\"]");
 
-        const key = name.value.toLowerCase().trim().replaceAll(" ", "").substring(0, 7);
+        const key = name.value.toLowerCase().trim().replaceAll(" ", "").substring(0, 30);
 
         var list = {
           "marian": {
@@ -180,6 +180,25 @@ button:hover {
               "Your are a great mom and a wonderful friend! Cannot wait to make another great memory with you!",
             ],
         },
+        "jacquie": {
+            naughty: false,
+            tips: [
+              "Your are a great mom and a wonderful friend! I will give you back the tool when we are done with the project ;P I didn't forget!",
+            ],
+        },
+        "emmadelacour": {
+            naughty: false,
+            tips: [
+              "",
+            ],
+        },
+        "hayleydelacour": {
+            naughty: false,
+            tips: [
+              "",
+            ],
+        },
+
     }
         const child = list[key];
 
